@@ -1,0 +1,59 @@
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Phishing URL Detection API</title>
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+                    h1 { color: #333; }
+                    pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; }
+                </style>
+            </head>
+            <body>
+                <h1>Phishing URL Detection API</h1>
+                <p>This API provides phishing detection for URLs.</p>
+                
+                <h2>Endpoints</h2>
+                
+                <h3>1. Predict a Single URL</h3>
+                <pre>
+                POST /predict
+                Content-Type: application/json
+                
+                {
+                    "url": "https://example.com"
+                }
+                </pre>
+                
+                <h3>2. Batch Prediction</h3>
+                <pre>
+                POST /batch
+                Content-Type: application/json
+                
+                {
+                    "urls": [
+                        "https://example1.com",
+                        "https://example2.com"
+                    ]
+                }
+                </pre>
+                
+                <h3>3. Submit Feedback</h3>
+                <pre>
+                POST /feedback
+                Content-Type: application/json
+                
+                {
+                    "url": "https://example.com",
+                    "actual_label": 1,
+                    "predicted_label": 0
+                }
+                </pre>
+                
+                <h3>4. Health Check</h3>
+                <pre>
+                GET /health
+                </pre>
+            </body>
+            </html>
+            
