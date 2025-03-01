@@ -371,3 +371,69 @@ jinja2.exceptions.TemplateNotFound: index.html
 2025-03-01 22:00:57,020 - __main__ - INFO - Prediction request for URL: https://gogle.com
 2025-03-01 22:00:57,053 - __main__ - INFO - Prediction: False (prob: 0.0926)
 2025-03-01 22:00:57,053 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:00:57] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:06:08,588 - __main__ - INFO - Model and dependencies loaded successfully
+2025-03-01 22:06:08,588 - __main__ - INFO - Using optimal threshold: 0.5
+2025-03-01 22:06:08,617 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.223.135:5000
+2025-03-01 22:06:08,617 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-01 22:14:30,637 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:14:30] "GET / HTTP/1.1" 200 -
+2025-03-01 22:14:31,011 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:14:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-01 22:14:39,098 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:14:39] "GET /check-url HTTP/1.1" 200 -
+2025-03-01 22:14:39,332 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:14:39] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-01 22:14:39,332 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:14:39] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-01 22:15:11,705 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:15:11] "GET /check-url HTTP/1.1" 200 -
+2025-03-01 22:22:13,540 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:22:13] "GET /check-url HTTP/1.1" 200 -
+2025-03-01 22:22:13,892 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:22:13] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-01 22:22:13,892 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:22:13] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-01 22:22:15,048 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:22:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-01 22:23:06,691 - __main__ - INFO - Prediction request for URL: https://google.com-redirect@valimail.com
+2025-03-01 22:23:06,738 - __main__ - INFO - Prediction: True (prob: 0.6986)
+2025-03-01 22:23:06,738 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:23:06] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:27:32,161 - __main__ - INFO - Prediction request for URL: https://example.com/index.html
+2025-03-01 22:27:32,182 - __main__ - INFO - Prediction: True (prob: 0.9992)
+2025-03-01 22:27:32,182 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:27:32] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:28:33,110 - __main__ - INFO - Prediction request for URL: www.google.com
+2025-03-01 22:28:33,150 - __main__ - INFO - Prediction: True (prob: 0.9808)
+2025-03-01 22:28:33,150 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:28:33] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:28:54,623 - __main__ - INFO - Prediction request for URL: https://secure-paypal.com/login
+2025-03-01 22:28:54,685 - __main__ - INFO - Prediction: True (prob: 0.9993)
+2025-03-01 22:28:54,685 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:28:54] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:29:05,074 - __main__ - INFO - Prediction request for URL: https://paypal.com
+2025-03-01 22:29:05,082 - __main__ - INFO - Prediction: False (prob: 0.1763)
+2025-03-01 22:29:05,082 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:29:05] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:29:18,188 - __main__ - INFO - Prediction request for URL: https://bankofamerica.com
+2025-03-01 22:29:18,207 - __main__ - INFO - Prediction: False (prob: 0.3289)
+2025-03-01 22:29:18,207 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:29:18] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:30:05,709 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:30:05] "GET /check-url HTTP/1.1" 200 -
+2025-03-01 22:30:06,297 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:30:06] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-03-01 22:30:06,301 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:30:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-01 22:37:11,216 - __main__ - INFO - Prediction request for URL: google.com
+2025-03-01 22:37:11,236 - __main__ - INFO - Prediction: True (prob: 0.6247)
+2025-03-01 22:37:11,236 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:37:11] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:37:21,099 - __main__ - INFO - Prediction request for URL: google.com
+2025-03-01 22:37:21,123 - __main__ - INFO - Prediction: True (prob: 0.6247)
+2025-03-01 22:37:21,123 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:37:21] "POST /predict HTTP/1.1" 200 -
+2025-03-01 22:37:29,127 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:37:29] "GET /check-url HTTP/1.1" 200 -
+2025-03-01 22:37:29,403 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:37:29] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-03-01 22:37:29,408 - werkzeug - INFO - 127.0.0.1 - - [01/Mar/2025 22:37:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2025-03-02 01:31:04,649 - __main__ - INFO - Model and dependencies loaded successfully
+2025-03-02 01:31:04,649 - __main__ - INFO - Using optimal threshold: 0.5
+2025-03-02 01:31:04,663 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.223.135:5000
+2025-03-02 01:31:04,664 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 01:31:26,645 - __main__ - INFO - Prediction request for URL: https://google.com/
+2025-03-02 01:31:26,692 - __main__ - INFO - Prediction: True (prob: 0.9979)
+2025-03-02 01:31:26,692 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 01:31:26] "POST /predict HTTP/1.1" 200 -
+2025-03-02 01:31:27,906 - __main__ - INFO - Prediction request for URL: https://www.google.com/
+2025-03-02 01:31:27,964 - __main__ - INFO - Prediction: True (prob: 0.9994)
+2025-03-02 01:31:27,964 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 01:31:27] "POST /predict HTTP/1.1" 200 -
+2025-03-02 01:33:35,804 - __main__ - INFO - Prediction request for URL: https://www.google.com/
+2025-03-02 01:33:35,856 - __main__ - INFO - Prediction: True (prob: 0.9994)
+2025-03-02 01:33:35,856 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 01:33:35] "POST /predict HTTP/1.1" 200 -
+2025-03-02 01:34:13,268 - __main__ - INFO - Prediction request for URL: https://www.google.com/
+2025-03-02 01:34:13,296 - __main__ - INFO - Prediction: True (prob: 0.9994)
+2025-03-02 01:34:13,297 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 01:34:13] "POST /predict HTTP/1.1" 200 -
