@@ -35,8 +35,8 @@ def load_data():
     """Load training and validation data"""
     logger.info("Loading datasets...")
     
-    train_path = '../data/processed/train.csv'
-    val_path = '../data/processed/validation.csv'
+    train_path = 'data/processed/train.csv'
+    val_path = 'data/processed/validation.csv'
     
     if not os.path.exists(train_path) or not os.path.exists(val_path):
         logger.error("Training or validation data not found. Run preprocess.py first.")
