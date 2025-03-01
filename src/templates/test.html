@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">Phishing Detector</a>
+            <ul class="navbar-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Phishing Detector</h1>
+        <p class="subtitle">Enter a URL to check if it's safe or phishing.</p>
+        <div class="input-container">
+            <input type="text" id="urlInput" placeholder="https://example.com">
+            <button id="checkButton">Check URL</button>
+        </div>
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Analyzing URL...</p>
+        </div>
+        <div id="result" class="result">
+            <h2>Result</h2>
+            <p id="resultText"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ❤️ by Tanu Singh</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

@@ -68,6 +68,11 @@ def home():
     """Render home page with API documentation"""
     return render_template('index.html')
 
+@app.route('/check')
+def check_url():
+    """Check if a URL is phishing or legitimate"""
+    return render_template('test.html')
+
 @app.route('/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
