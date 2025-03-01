@@ -1,15 +1,17 @@
 document.getElementById("checkButton").addEventListener("click", async () => {
-  const urlInput = document.getElementById("urlInput").value.trim();
+  let urlInput = document.getElementById("urlInput").value.trim();
   if (!urlInput) {
     alert("Please enter a URL.");
     return;
   }
 
+  urlInput = urlInput.replace(/^https?:\/\/(www\.)?/, "https://");
+
   document.getElementById("loading").style.display = "flex";
   document.getElementById("result").style.display = "none";
 
   try {
-    const response = await fetch("/check-url", {
+    const response = await fetch("/predict", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: urlInput }),
