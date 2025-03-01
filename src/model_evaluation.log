@@ -1,0 +1,33 @@
+2025-03-01 10:35:52,739 - __main__ - INFO - Starting model evaluation...
+2025-03-01 10:35:52,740 - __main__ - INFO - Loading test dataset...
+2025-03-01 10:35:52,740 - __main__ - ERROR - Test data not found. Run preprocess.py first.
+2025-03-01 10:39:02,855 - __main__ - INFO - Starting model evaluation...
+2025-03-01 10:39:02,855 - __main__ - INFO - Loading test dataset...
+2025-03-01 10:39:02,867 - __main__ - INFO - Test data: 10950 samples
+2025-03-01 10:39:02,868 - __main__ - INFO - Loading model and feature extractor...
+2025-03-01 10:39:03,329 - __main__ - INFO - Model loaded: GradientBoostingClassifier
+2025-03-01 10:39:03,331 - __main__ - INFO - Evaluating model on test data...
+2025-03-01 10:39:04,726 - __main__ - INFO - Test metrics - Accuracy: 0.9982, Precision: 0.9998, Recall: 0.9981, F1: 0.9989
+2025-03-01 10:39:04,733 - __main__ - INFO - 
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99      1500
+           1       1.00      1.00      1.00      9450
+
+    accuracy                           1.00     10950
+   macro avg       0.99      1.00      1.00     10950
+weighted avg       1.00      1.00      1.00     10950
+
+2025-03-01 10:39:04,734 - __main__ - INFO - 
+Confusion Matrix:
+2025-03-01 10:39:04,735 - __main__ - INFO - 1498 2
+2025-03-01 10:39:04,735 - __main__ - INFO - 18 9432
+2025-03-01 10:39:06,602 - __main__ - INFO - Confusion matrix saved to evaluation/confusion_matrix.png
+2025-03-01 10:39:06,727 - __main__ - INFO - ROC curve saved to evaluation/roc_curve.png (AUC: 0.9996)
+2025-03-01 10:39:06,733 - __main__ - INFO - False positives: 2 URLs
+2025-03-01 10:39:06,733 - __main__ - INFO - False negatives: 18 URLs
+2025-03-01 10:39:06,734 - __main__ - INFO - Error analysis saved to evaluation directory
+2025-03-01 10:39:06,907 - __main__ - INFO - Threshold analysis saved to evaluation/threshold_analysis.csv and .png
+2025-03-01 10:39:06,908 - __main__ - INFO - Optimal threshold for F1 score: 0.40
+2025-03-01 10:39:06,909 - __main__ - INFO - Model evaluation completed successfully.
