@@ -453,3 +453,24 @@ jinja2.exceptions.TemplateNotFound: index.html
 2025-03-02 10:16:51,616 - __main__ - INFO - Prediction request for URL: https://www.deepseek.com/
 2025-03-02 10:16:51,665 - __main__ - INFO - Prediction: True (prob: 0.9995)
 2025-03-02 10:16:51,672 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 10:16:51] "POST /predict HTTP/1.1" 200 -
+2025-03-02 21:01:19,979 - __main__ - INFO - Model and dependencies loaded successfully
+2025-03-02 21:01:19,979 - __main__ - INFO - Using optimal threshold: 0.5
+2025-03-02 21:01:20,002 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.223.135:5000
+2025-03-02 21:01:20,002 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 21:01:23,787 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:01:23] "GET / HTTP/1.1" 200 -
+2025-03-02 21:01:24,075 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:01:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-02 21:01:34,200 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:01:34] "GET /check-url HTTP/1.1" 200 -
+2025-03-02 21:01:34,349 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:01:34] "GET /static/styles.css HTTP/1.1" 200 -
+2025-03-02 21:01:34,349 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:01:34] "GET /static/script.js HTTP/1.1" 200 -
+2025-03-02 21:01:49,287 - __main__ - INFO - Prediction request for URL: https://youtube.com
+2025-03-02 21:01:49,771 - __main__ - INFO - Prediction: False (prob: 0.1722)
+2025-03-02 21:01:49,771 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:01:49] "POST /predict HTTP/1.1" 200 -
+2025-03-02 21:01:54,404 - __main__ - INFO - Prediction request for URL: https://youtube.com
+2025-03-02 21:01:54,443 - __main__ - INFO - Prediction: False (prob: 0.1722)
+2025-03-02 21:01:54,443 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:01:54] "POST /predict HTTP/1.1" 200 -
+2025-03-02 21:03:14,686 - __main__ - INFO - Prediction request for URL: https://getipass.com-znjp.xin/
+2025-03-02 21:03:14,723 - __main__ - INFO - Prediction: True (prob: 0.9999)
+2025-03-02 21:03:14,723 - werkzeug - INFO - 127.0.0.1 - - [02/Mar/2025 21:03:14] "POST /predict HTTP/1.1" 200 -
