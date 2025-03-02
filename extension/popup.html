@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 340px;
+            margin: 0;
+            padding: 16px;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .header img {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .url-section {
+            background-color: #f5f5f5;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .url-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        #current-url {
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        #status {
+            font-size: 14px;
+            padding: 8px 0;
+            font-weight: 500;
+        }
+
+        .status-info {
+            color: #0066cc;
+        }
+
+        .status-success {
+            color: #28a745;
+        }
+
+        .status-warning {
+            color: #ffc107;
+        }
+
+        .status-error {
+            color: #6c757d;
+        }
+
+        .status-danger {
+            color: #dc3545;
+        }
+
+        #risk-display {
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .risk-meter-container {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+        }
+
+        #risk-meter {
+            flex-grow: 1;
+            height: 8px;
+            margin: 0 10px;
+        }
+
+        .risk-score {
+            font-weight: 600;
+        }
+
+        #risk-level {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .caution {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 4px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .setting-label {
+            font-size: 14px;
+        }
+
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 20px;
+            transition: .4s;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+
+        input:checked+.toggle-slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        .threshold-container {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        #risk-threshold {
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .stat-box {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a73e8;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .button {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            transition: background-color 0.2s;
+        }
+
+        .button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .primary-button {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        .primary-button:hover {
+            background-color: #1557b0;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 16px;
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+        }
+
+        .footer a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="images/icon48.png" alt="PhishGuard logo">
+        <h1>PhishGuard - Phishing Detector</h1>
+    </div>
+
+    <div class="url-section">
+        <div class="url-label">Current Website:</div>
+        <div id="current-url">Loading...</div>
+        <div id="status" class="status-info">Checking...</div>
+    </div>
+
+    <div id="risk-display">
+        <div class="section-title">Phishing Risk Assessment</div>
+        <div class="risk-meter-container">
+            <span class="risk-score">0</span>
+            <meter id="risk-meter" min="0" max="100" low="20" high="80" optimum="0" value="0"></meter>
+            <span class="risk-score" id="risk-score">0</span>
+        </div>
+        <div style="text-align: center; margin-top: 5px;">
+            <span id="risk-level" class="success">Safe</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Protection Settings</div>
+        <div class="setting-row">
+            <span class="setting-label">PhishGuard Protection</span>
+            <label class="toggle">
+                <input type="checkbox" id="enabled-toggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="setting-row">
+            <span class="setting-label">Show Notifications</span>
+            <label class="toggle">
+                <input type="checkbox" id="notifications-toggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="setting-row">
+            <span class="setting-label">Block High-Risk Websites</span>
+            <label class="toggle">
+                <input type="checkbox" id="block-high-risk-toggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="setting-row">
+            <span class="setting-label">Risk Threshold</span>
+            <span id="risk-threshold-value">80</span>
+        </div>
+        <div class="threshold-container">
+            <span>Low</span>
+            <input type="range" id="risk-threshold" min="50" max="95" step="5" value="80">
+            <span>High</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Statistics</div>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value" id="stats-urls-checked">0</div>
+                <div class="stat-label">URLs Checked</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="stats-phishing-detected">0</div>
+                <div class="stat-label">Phishing Detected</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="stats-blocked">0</div>
+                <div class="stat-label">Sites Blocked</div>
+            </div>
+        </div>
+        <div style="font-size: 12px; color: #666; margin-bottom: 10px;">
+            Last reset: <span id="stats-last-reset">Never</span>
+        </div>
+        <div class="button-container">
+            <button id="reset-stats" class="button">Reset Statistics</button>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button id="scan-button" class="button primary-button">Scan Current Page Again</button>
+    </div>
+
+    <div class="footer">
+        PhishGuard v1.0.0 | <a href="#" id="help-link">Help</a> | <a href="#" id="report-link">Report Issues</a>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

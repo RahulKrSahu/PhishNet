@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard Warning - Potentially Harmful Website</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 800px;
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .warning-icon {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 24px;
+    }
+
+    .warning-title {
+      color: #dc3545;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .warning-message {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .site-info {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .site-url {
+      font-family: monospace;
+      font-size: 16px;
+      word-break: break-all;
+      color: #721c24;
+      background-color: #f8d7da;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+
+    .risk-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .risk-meter {
+      width: 300px;
+      height: 16px;
+      margin: 0 10px;
+    }
+
+    .risk-score {
+      font-weight: 700;
+      color: #dc3545;
+      font-size: 24px;
+    }
+
+    .buttons {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .button {
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .button-primary {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .button-secondary {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      color: #333;
+    }
+
+    .button-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .why-blocked {
+      margin-top: 40px;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .why-blocked h3 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #495057;
+    }
+
+    .why-blocked ul {
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .why-blocked li {
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #6c757d;
+    }
+
+    .footer a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="images/icon128_warning.png" alt="Warning Icon" class="warning-icon">
+    
+    <h1 class="warning-title">Phishing Warning</h1>
+    
+    <p class="warning-message">
+      PhishGuard has detected that this website is likely a phishing attempt designed to steal your personal information.
+      For your safety, access to this site has been blocked.
+    </p>
+    
+    <div class="site-info">
+      <div>You were trying to visit:</div>
+      <div class="site-url" id="blocked-url">https://suspected-phishing-site.com</div>
+      
+      <div class="risk-info">
+        <span>Risk Score:</span>
+        <meter class="risk-meter" id="risk-meter" min="0" max="100" low="20" high="80" optimum="0" value="95"></meter>
+        <span class="risk-score" id="risk-score">95%</span>
+      </div>
+    </div>
+    
+    <div class="buttons">
+      <button class="button button-primary" id="back-button">Go Back to Safety</button>
+      <button class="button button-secondary" id="settings-button">Adjust Protection Settings</button>
+      <button class="button button-danger" id="proceed-anyway-button">Proceed Anyway (Not Recommended)</button>
+    </div>
+    
+    <div class="why-blocked">
+      <h3>Why was this site blocked?</h3>
+      <ul>
+        <li>The site shows characteristics typical of phishing websites</li>
+        <li>The domain may be attempting to impersonate a legitimate site</li>
+        <li>The site may be attempting to collect sensitive information</li>
+        <li>The risk score exceeds your configured threshold for safe browsing</li>
+      </ul>
+    </div>
+    
+    <div class="footer">
+      PhishGuard Protection | <a href="#" id="learn-more">Learn more about phishing</a> | <a href="#" id="report-false-positive">Report a false positive</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const blockedUrl = urlParams.get('url');
+      const riskScore = urlParams.get('risk');
+      
+      // Update the UI with the blocked URL and risk score
+      if (blockedUrl) {
+        document.getElementById('blocked-url').textContent = decodeURIComponent(blockedUrl);
+      }
+      
+      if (riskScore) {
+        const score = parseFloat(riskScore);
+        document.getElementById('risk-score').textContent = score + '%';
+        document.getElementById('risk-meter').value = score;
+      }
+      
+      // Set up button actions
+      document.getElementById('back-button').addEventListener('click', function() {
+        history.back();
+      });
+      
+      document.getElementById('settings-button').addEventListener('click', function() {
+        chrome.runtime.sendMessage({ action: 'openSettings' });
+      });
+      
+      document.getElementById('proceed-anyway-button').addEventListener('click', function() {
+        if (confirm('Warning: Proceeding to this site may put your personal information at risk. Are you sure you want to continue?')) {
+          // Add this site to a temporary allowlist
+          if (blockedUrl) {
+            chrome.runtime.sendMessage({ 
+              action: 'allowSite', 
+              url: decodeURIComponent(blockedUrl),
+              temporary: true
+            }, function() {
+              // Navigate to the site
+              window.location.href = decodeURIComponent(blockedUrl);
+            });
+          }
+        }
+      });
+      
+      document.getElementById('report-false-positive').addEventListener('click', function() {
+        chrome.runtime.sendMessage({ 
+          action: 'reportFalsePositive', 
+          url: blockedUrl ? decodeURIComponent(blockedUrl) : ''
+        });
+        alert('Thank you for your feedback. Our team will review this site.');
+      });
+      
+      document.getElementById('learn-more').addEventListener('click', function() {
+        chrome.runtime.sendMessage({ action: 'openLearnMore' });
+      });
+    });
+  </script>
+</body>
+</html>
