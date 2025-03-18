@@ -11,6 +11,34 @@ const MIN_URL_LENGTH = 10; // Don't check very short URLs
 // Cache for URL check results
 let urlCache = {};
 
+function normalizeUrl(url) {
+  try {
+    const urlObj = new URL(url);
+
+    // Remove 'www.' if present
+    let hostname = urlObj.hostname;
+    if (hostname.startsWith("www.")) {
+      hostname = hostname.substring(4);
+    }
+
+    // Extract protocol (http or https)
+    let protocol = urlObj.protocol;
+
+    // Reconstruct URL in the format used during training
+    // Note: Legitimate URLs in the dataset use http://, not https://
+    // Example: http://google.com (no trailing slash)
+    let path = urlObj.pathname;
+    if (path === "/") {
+      path = ""; // Remove trailing slash
+    }
+
+    return `${protocol}//${hostname}${path}${urlObj.search}`;
+  } catch (error) {
+    console.error("Error normalizing URL:", error);
+    return url;
+  }
+}
+
 // Initialize extension
 chrome.runtime.onInstalled.addListener(() => {
   console.log("PhishGuard extension installed");
@@ -92,6 +120,7 @@ async function checkUrl(url, tabId) {
     }
 
     // Send request to API
+    url = normalizeUrl(url);
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
